@@ -192,7 +192,7 @@ public class RestApi {
     public static String doDelete(String url, String token, String jsonStr) {
 
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpDelete httpDelete = new HttpDelete(url);
+        HttpDeleteWithBody httpDelete = new HttpDeleteWithBody(url);
 //        RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(35000).setConnectionRequestTimeout(35000).setSocketTimeout(60000).build();
 //        httpDelete.setConfig(requestConfig);
 //        httpDelete.setHeader("Content-type", "application/json");
@@ -203,6 +203,7 @@ public class RestApi {
 
         CloseableHttpResponse httpResponse = null;
         try {
+            httpDelete.setEntity(new StringEntity(jsonStr));
             httpResponse = httpClient.execute(httpDelete);
             HttpEntity entity = httpResponse.getEntity();
             String result = EntityUtils.toString(entity);

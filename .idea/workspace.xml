@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="post-blog:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="5da13fad-e067-4d8e-bec5-6d106eb0e78f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/logback-classic-1.1.8.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/logback-core-1.1.8.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/HttpDeleteWithBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/log4j-1.2-api-2.17.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/log4j-api-2.17.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/log4j-core-2.17.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/slf4j-api-1.7.25.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/slf4j-log4j12-1.7.25.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/RestApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/RestApi.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +62,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "D:/xgzhang/java/workspace/git/post-blog/src",
+    "last_opened_file_path": "D:/xgzhang/java/workspace/git/post-blog/lib/slf4j-log4j12-1.7.25.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
@@ -63,8 +77,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\xgzhang\java\workspace\git\post-blog\src" />
       <recent name="D:\xgzhang\java\workspace\git\post-blog\lib" />
+      <recent name="D:\xgzhang\java\workspace\git\post-blog\src" />
       <recent name="D:\xgzhang\java\workspace\git\post-blog\src\client" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -82,7 +96,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="post-blog" />
-      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../../../home/blog/content/post/testtt.md" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../../../home/blog/content/post/testtt.md remove" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -139,5 +153,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/client/PostBlog.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
