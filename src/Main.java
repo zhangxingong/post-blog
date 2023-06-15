@@ -24,17 +24,5 @@ public class Main {
         postBlog.setMsg("init");
         postBlog.postBlog();
 
-        //System.out.println("Hello world!");
-//        String url = "https://api.github.com/user/repos";
-        //String url = "https://api.github.com/repos/zhangxingong/blog/contents/content/about/index.md";
-      //  String res = RestApi.doGet(url, "Bearer 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");
-//        String res = "d:/home/blog/content/post/testtt.md";
-//        File file = new File(res);
-//        if (file.exists()) {
-//           String name=  file.getName();
-//            System.out.println("name = " + name);
-//        }
-       // System.out.println("index = " + index);
-        System.out.println("res = " + postBlog.getMsg());
     }
 }
