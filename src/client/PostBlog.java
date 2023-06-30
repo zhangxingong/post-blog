@@ -87,10 +87,10 @@ public class PostBlog {
             param.put("sha", sha);
         }
         param.put("message", message);
+        log.info("jsonParam = " + param);
         param.put("content", content);
 
         String jsonParam = JSON.toJSONString(param);
-        log.info("jsonParam = " + jsonParam);
 
         JSONObject res = JSON.parseObject(RestApi.doPut(url, getToken(), jsonParam));
         log.info("res = " + res);
@@ -117,7 +117,7 @@ public class PostBlog {
         param.put("message", message);
 
         String jsonParam = JSON.toJSONString(param);
-        log.info("jsonParam = " + jsonParam);
+        //log.info("jsonParam = " + jsonParam);
 
         JSONObject res = JSON.parseObject(RestApi.doDelete(url, getToken(), jsonParam));
         log.info("res = " + res);
@@ -127,7 +127,12 @@ public class PostBlog {
     }
 
     private String getPostPath(String name) {
-        String path = BlogConstant.CONETNT_URL + "content/post/" + name;
+        String path = "";
+        if (FileUtils.isImageFile(name)) {
+            path = BlogConstant.CONETNT_URL + "themes/maupassant/static/img/" + name;
+        } else {
+            path = BlogConstant.CONETNT_URL + "content/post/" + name;
+        }
         log.info("postPath = " + path);
         return path;
     }
@@ -136,7 +141,7 @@ public class PostBlog {
         String name = getFile().getName();
         String url = getPostPath(name);
         String res = RestApi.doGet(url, getToken());
-        log.info("get Content=" + res);
+        //log.info("get Content=" + res);
         JSONObject jsonRes = JSON.parseObject(res);
         return jsonRes;
     }

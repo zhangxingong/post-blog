@@ -19,6 +19,11 @@ public class Main {
             log.error("param blog's path is required!");
             return;
         }
+        File file = new File(filePath);
+        if (file == null || !file.exists()) {
+            log.error("unfound this file!");
+            return;
+        }
         String authorization = PropertiesUtil.getProperty("authorization");
         if (StringUtils.isBlank(authorization)) {
             log.error("authorization is blank, cannot continue.");

@@ -176,7 +176,83 @@ public class FileUtils {
 		}
 		return suffixsAbbr;
 	}
+	public static String getAbbrSuffixes(String abbr) {
+		if (FILETYPE_ZIP.equals(abbr)) {
+			return "*.zip,*.rar,*.7z,*.gz";
+		} else if (FILETYPE_IMAGE.equals(abbr)) {
+			return "*.jpg,*.jpeg,*.png,*.gif,*.bmp,*.tif,*.heic";
+		} else if (FILETYPE_WORD.equals(abbr)) {
+			return "*.doc,*.docx";
+		} else if (FILETYPE_EXCEL.equals(abbr)) {
+			return "*.xls,*.xlsx";
+		} else if (FILETYPE_PDF.equals(abbr)) {
+			return "*.pdf";
+		} else if (FILETYPE_TXT.equals(abbr)) {
+			return "*.txt,*.csv";
+		} else if (FILETYPE_PPT.equals(abbr)) {
+			return "*.ppt,*.pptx";
+		} else if (FILETYPE_VIDEO.equals(abbr)) {
+			return "*.avi,*.mp4,*.mkv,*.wmv,*.mov";
+		} else if (FILETYPE_AUDIO.equals(abbr)) {
+			return "*.mp3,*.wav,*.wma,*.flac,*.ogg";
+		} else if (FILETYPE_OFFICE.equals(abbr)) {
+			return "*.doc,*.docx,*.xls,*.xlsx,*.ppt,*.pptx,*.wps,*.pdf,*.txt,*.csv";
+		}
+		return null;
+	}
 
+	public static String getExtractdSuffixs(String suffixs) {
+		StringBuffer sb = new StringBuffer();
+		boolean appended = false;
+		if (StringUtils.isValid(suffixs)) {
+			String[] sa = StringUtils.fuzzySplit(suffixs);
+			for (int i = 0; i < sa.length; i++) {
+				String s = sa[i];
+				if (StringUtils.isValid(s)) {
+					if (appended)
+						sb.append(",");
+					if (getSuffixAbbrs().contains(s)) {
+						sb.append(getAbbrSuffixes(s));
+					} else {
+						sb.append(s);
+					}
+					appended = true;
+				}
+			}
+		} else {
+			sb.append("*.*");
+		}
+		return sb.toString();
+	}
+
+	public static boolean fileSuffixMatch(String fileName, String suffixList) {
+		if (!StringUtils.isValid(suffixList)) {
+			return true;
+		}
+		if (!StringUtils.isValid(fileName)) {
+			return false;
+		}
+		String[] suffixes = StringUtils
+				.fuzzySplit(getExtractdSuffixs(suffixList));
+		for (int i = 0; i < suffixes.length; i++) {
+			String suf = suffixes[i].trim();
+			if (suf.equals("*.*")) {
+				return true;
+			}
+			if (suf.startsWith("*.")) {
+				suf = suf.substring(2);
+			}
+			if (fileName.toUpperCase().endsWith(suf.toUpperCase())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+
+	public static boolean isImageFile(String fileName) {
+		return fileSuffixMatch(fileName, getAbbrSuffixes(FILETYPE_IMAGE));
+	}
 
 	public static String convertFileName(String origFileName) {
 		String fileName = StringUtils.shortUUID();
