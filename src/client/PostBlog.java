@@ -128,11 +128,15 @@ public class PostBlog {
 
     private String getPostPath(String name) {
         String path = "";
+        String gh_path;
         if (FileUtils.isImageFile(name)) {
-            path = BlogConstant.CONETNT_URL + "themes/maupassant/static/img/" + name;
+            gh_path = PropertiesUtil.getProperty("gh_image_path");
+            path = "https://api.github.com/repos/zhangxingong/blog/contents/" + gh_path + name;
         } else {
-            path = BlogConstant.CONETNT_URL + "content/post/" + name;
+            gh_path = PropertiesUtil.getProperty("gh_content_path");
+            path = "https://api.github.com/repos/zhangxingong/blog/contents/" + gh_path + name;
         }
+
         log.info("postPath = " + path);
         return path;
     }
