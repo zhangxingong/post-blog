@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import java.io.File;
+import java.util.regex.Pattern;
 
 /**
  * Created by xgzhang on 2023/6/14.
@@ -127,6 +128,10 @@ public class PostBlog {
     }
 
     private String getPostPath(String name) {
+        if (StringUtils.isBlank(name)) {
+            throw new RuntimeException("文件名称获取失败");
+        }
+
         String path = "";
         String gh_path;
         if (FileUtils.isImageFile(name)) {
@@ -134,6 +139,9 @@ public class PostBlog {
             path = "https://api.github.com/repos/zhangxingong/blog/contents/" + gh_path + name;
         } else {
             gh_path = PropertiesUtil.getProperty("gh_content_path");
+            if (Pattern.matches("idea(_?)\\d+.(md|org)", name)) {
+                gh_path = PropertiesUtil.getProperty("gh_idea_path");
+            }
             path = "https://api.github.com/repos/zhangxingong/blog/contents/" + gh_path + name;
         }
 
